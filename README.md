@@ -1,2 +1,1 @@
-connecting history card from dashboard with topic.jsx
-trransfering topicid
+mapping keywords into paragraph in notes---

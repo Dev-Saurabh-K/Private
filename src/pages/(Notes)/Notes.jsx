@@ -1,5 +1,6 @@
 import {useState, useEffect} from 'react';
 import axios from 'axios';
+import Chat from "./Chat";
 
 
 import {useTopicStore} from "../../store/topicStore";
@@ -29,7 +30,6 @@ const Notes = () => {
     fetchNotes()
   },[topic_id])
 
-  
   return (
     <div>
       <div>
@@ -45,6 +45,9 @@ const Notes = () => {
             </div>
           </div>
 
+      </div>
+      <div>
+        <Chat/>
       </div>
     </div>
   )
