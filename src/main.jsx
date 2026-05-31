@@ -11,13 +11,15 @@ import Dashboard from "./pages/(Dashboard)/Dashboard.jsx"
 import History from "./pages/(History)/History.jsx"
 import Analytics from "./pages/(Analytics)/Analytics.jsx"
 import User from "./pages/(UserProfile)/User.jsx"
+import Topics from "./pages/(TopicCard)/Topics.jsx"
 
 const router = createBrowserRouter([
   { path: "/", element: <Login /> },
   { path: "/dashboard", element: <Dashboard /> },
   { path: "/history", element: <History/>},
   { path: "/analytics", element: <Analytics/>},
-  { path: "/Profile", element: <User/>}
+  { path: "/profile", element: <User/>},
+  { path: "/topic", element: <Topics/>}
 ]);
 
 createRoot(document.getElementById("root")).render(

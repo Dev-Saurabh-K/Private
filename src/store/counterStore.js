@@ -1,9 +1,26 @@
-import { create } from "zustand"
+// import { create } from 'zustand'
 
-const useCounterStore = create((set)=> ({
-    count: 0,
-    increment: () => set((state)=> ({ count: state.count+1 })),
-    decrement: () => set((state)=> ({ count: state.count-1 }))
-}));
+// const useStore = create((set) => ({
+//   count: 1,
+//   inc: () => set((state) => ({ count: state.count + 1 })),
+// }))
 
-export default useCounterStore;
+// function Counter() {
+//   const { count, inc } = useStore()
+//   return (
+//     <div>
+//       <span>{count}</span>
+//       <button onClick={inc}>one up</button>
+//     </div>
+//   )
+// }
+
+import { create } from "zustand";
+
+const useStore = create((set) => ({
+    count:1,
+    inc: () => set((state)=> ({count: state.count + 1})),
+}))
+
+
+export {useStore}

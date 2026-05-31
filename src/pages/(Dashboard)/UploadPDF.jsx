@@ -1,10 +1,14 @@
 import axios from "axios";
 import {useState} from "react";
 
+
+
+
 const UploadPDF = () => {
     const [Pdf, setPdf] = useState(null);
     const [loading, setLoading] = useState(false);
 
+    
     const URL = `${import.meta.env.VITE_API_URL}/api/generate/syllabus`;
 
     const handleFileChange =(e) =>{
@@ -50,6 +54,8 @@ const UploadPDF = () => {
         <div onClick={uploadPdf} className="size-20 bg-amber-300">
             submit
         </div>
+
+        
         
         {loading && <div className="bg-red-600 size-5">submitting...</div>}
     </div>
