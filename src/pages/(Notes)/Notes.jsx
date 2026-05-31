@@ -10,7 +10,6 @@ const Notes = () => {
   const URL = `${import.meta.env.VITE_API_URL}/api/retrieve/notes?topic_id=${topic_id}`;
   const token = localStorage.getItem("access_token");
 
-  // http://localhost:8000/api/retrieve/notes?topic_id=2
 
   const [notes, setNotes]=useState([]);
 
@@ -38,6 +37,12 @@ const Notes = () => {
             <h2>{notes.topic_text}</h2>
             {notes.topic_notes}
             {/* {keywords} */}
+            <div>
+              <h4>keywords</h4>
+              {notes?.keywords?.map((keyword, index)=>(
+                <span key={index} className="flex">{keyword}</span>
+              ))}
+            </div>
           </div>
 
       </div>
