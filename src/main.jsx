@@ -13,6 +13,7 @@ import Analytics from "./pages/(Analytics)/Analytics.jsx"
 import User from "./pages/(UserProfile)/User.jsx"
 import Topics from "./pages/(TopicCard)/Topics.jsx"
 import Notes from "./pages/(Notes)/Notes.jsx"
+import Quiz from "./pages/(Quiz)/Quiz.jsx"
 
 const router = createBrowserRouter([
   { path: "/", element: <Login /> },
@@ -21,7 +22,8 @@ const router = createBrowserRouter([
   { path: "/analytics", element: <Analytics/>},
   { path: "/profile", element: <User/>},
   { path: "/topic", element: <Topics/>},
-  { path: "/notes", element: <Notes/>}
+  { path: "/notes", element: <Notes/>},
+  { path: "/quiz", element: <Quiz/>}
 ]);
 
 createRoot(document.getElementById("root")).render(
