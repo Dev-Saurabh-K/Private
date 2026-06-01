@@ -48,7 +48,7 @@ function Login() {
         navigate('/dashboard')
       }else{
         setError(`Error: ${response.status}, ${response.statusText}`)
-        console.log(response.statusText)
+        // console.log(response.statusText)
       }
 
     }catch(error){

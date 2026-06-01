@@ -2,6 +2,8 @@ import {useState, useEffect} from 'react';
 import axios from 'axios';
 import Chat from "./Chat";
 
+import HighlightedNotes from "./HighlightedNotes"
+
 
 import {useTopicStore} from "../../store/topicStore";
 
@@ -14,10 +16,9 @@ const Notes = () => {
 
   const [notes, setNotes]=useState([]);
 
-
   useEffect(()=>{
     const fetchNotes = async()=>{
-      console.log(topic_id)
+      // console.log(topic_id)
       const response = await axios.get(URL,
       {
         headers:{
@@ -30,12 +31,15 @@ const Notes = () => {
     fetchNotes()
   },[topic_id])
 
+
   return (
     <div>
       <div>
           <div key={notes.id}>
             <h2>{notes.topic_text}</h2>
-            {notes.topic_notes}
+            {/* {notes.topic_notes} */}
+            <HighlightedNotes text={notes.topic_notes} words={notes.keywords}/>
+            {/* {console.log(notes.keywords)} */}
             {/* {keywords} */}
             <div>
               <h4>keywords</h4>
