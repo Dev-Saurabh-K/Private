@@ -5,7 +5,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./styles/index.css";
 import "./styles/theme.css";
 
-import Login from "./Login.jsx";
+import Login from "./pages/(Auth)/Login.jsx";
 
 import Dashboard from "./pages/(Dashboard)/Dashboard.jsx"
 import History from "./pages/(History)/History.jsx"
