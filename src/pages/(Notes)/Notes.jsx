@@ -1,6 +1,7 @@
 import {useState, useEffect} from 'react';
 import axios from 'axios';
 import Chat from "./Chat";
+import Navbar from "../(Dashboard)/Navbar";
 
 import HighlightedNotes from "./HighlightedNotes"
 
@@ -33,7 +34,8 @@ const Notes = () => {
 
 
   return (
-    <div>
+    <div className="min-h-screen mb-40 w-screen flex items-center justify-center flex-col bg-slate-50 gap-4">
+      <Navbar/>
       <div>
           <div key={notes.id}>
             <h2>{notes.topic_text}</h2>
