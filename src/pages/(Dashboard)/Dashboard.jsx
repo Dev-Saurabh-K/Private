@@ -51,16 +51,16 @@ const Dashboard = () => {
         </div>
       </div>
       <div className="flex flex-row flex-wrap gap-8 items-center justify-center h-[90vh] w-screen">
-        <div className="lg:w-1/3 w-10/12 lg:h-1/2 border border-slate-300 rounded-2xl flex items-center justify-center">
+        <div className="lg:w-1/3 w-10/12 lg:h-1/2 border border-slate-300 rounded-md flex items-center justify-center">
           <UploadPDF />
         </div>
         {/* <Link to="/History" className="w-fit h-fit"> */}
-        <div className="lg:w-1/3 w-10/12 lg:h-1/2 border border-slate-300 rounded-2xl flex items-center justify-center">
+        <div className="lg:w-1/3 w-10/12 lg:h-1/2 border border-slate-300 rounded-md flex items-center justify-center">
           <HistoryComp />
         </div>
         {/* </Link> */}
-        <div className="lg:w-1/3 w-10/12 lg:h-1/2 border border-slate-300 rounded-2xl flex items-center justify-center">Daily Login</div>
-        <Link to="/Analytics" className="lg:w-1/3 w-10/12 lg:h-1/2 border border-slate-300 rounded-2xl flex items-center justify-center">
+        <div className="lg:w-1/3 w-10/12 lg:h-1/2 border border-slate-300 rounded-md flex items-center justify-center">Daily Login</div>
+        <Link to="/Analytics" className="lg:w-1/3 w-10/12 lg:h-1/2 border border-slate-300 rounded-md flex items-center justify-center">
           <div className="">Analytics</div>
         </Link>
       </div>
