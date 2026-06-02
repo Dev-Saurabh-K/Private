@@ -4,12 +4,15 @@ import { useCallback } from "react";
 import { useDropzone } from "react-dropzone";
 import { Upload } from "lucide-react";
 import CircularProgress from '@mui/material/CircularProgress';
-import { toast } from "react-toastify"
+import { toast } from "react-toastify";
+import { useHistoryRefreshStore } from "../../store/historyRefreshToken";
+
 const UploadPDF = () => {
   const [Pdf, setPdf] = useState(null);
   const [fileName, setFileName] = useState("");
   const [fileSize, setFileSize] = useState("");
   const [loading, setLoading] = useState(false);
+  const sethrt = useHistoryRefreshStore((state)=> state.sethrt)
 
   const URL = `${import.meta.env.VITE_API_URL}/api/generate/syllabus`;
 
@@ -48,6 +51,7 @@ const UploadPDF = () => {
       });
       setLoading(false);
       toast.success("File Uploaded Sucessgully!")
+      sethrt();
       // console.log(response)
     } catch (error) {
       console.log(error);
@@ -71,7 +75,7 @@ const UploadPDF = () => {
       <div className="w-full h-full flex flex-col gap-6">
         <div
           {...getRootProps()}
-          className="border border-slate-400 rounded-md w-full h-8/12 flex justify-center items-center flex-col gap-3"
+          className="border border-dashed border-slate-400 rounded-md w-full h-8/12 flex justify-center items-center flex-col gap-3"
         >
           <input {...getInputProps()} />
           <Upload className="text-slate-500 size-14"/>

@@ -55,7 +55,7 @@ const Dashboard = () => {
           <UploadPDF />
         </div>
         {/* <Link to="/History" className="w-fit h-fit"> */}
-        <div className="lg:w-1/3 w-10/12 lg:h-1/2 border border-slate-300 rounded-md flex items-center justify-center">
+        <div className="lg:w-1/3 w-10/12 lg:h-1/2 border border-slate-300 rounded-md flex items-center justify-center overflow-y-auto hide-scrollbar p-6">
           <HistoryComp />
         </div>
         {/* </Link> */}
