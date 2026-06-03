@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" width="100%" height="100%">
+  <defs>
+    <radialGradient id="bgGrad" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#141923" />
+      <stop offset="100%" stop-color="#090c10" />
+    </radialGradient>
+
+    <linearGradient id="qRingGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00f2fe" />
+      <stop offset="50%" stop-color="#4facfe" />
+      <stop offset="100%" stop-color="#0000ff" />
+    </linearGradient>
+
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+    
+    <filter id="subtleGlow" x="-10%" y="-10%" width="120%" height="120%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <rect width="800" height="800" fill="url(#bgGrad)" />
+
+  <g opacity="0.05" stroke="#00f2fe" stroke-width="1" fill="none">
+    <circle cx="400" cy="350" r="280" />
+    <circle cx="400" cy="350" r="220" />
+    <line x1="150" y1="200" x2="250" y2="280" />
+    <line x1="650" y1="200" x2="550" y2="280" />
+    <line x1="200" y1="550" x2="300" y2="480" />
+    <line x1="600" y1="550" x2="500" y2="480" />
+  </g>
+
+  <g transform="translate(0, -20)">
+    
+    <g stroke="url(#qRingGrad)" stroke-width="4" fill="none" opacity="0.4">
+      <path d="M 400 130 C 260 130, 160 230, 160 370 C 160 510, 260 610, 400 610" />
+      <path d="M 400 160 C 290 160, 200 250, 200 370 C 200 490, 290 580, 400 580" />
+    </g>
+
+    <path d="M 400 120 
+             C 250 120, 130 240, 130 390 
+             C 130 540, 250 660, 400 660 
+             C 475 660, 545 625, 595 570 
+             L 670 645 
+             C 685 660, 710 660, 725 645 
+             C 740 630, 740 605, 725 590 
+             L 650 515 
+             C 695 465, 670 390, 670 390
+             C 670 240, 550 120, 400 120 Z" 
+          fill="none" 
+          stroke="url(#qRingGrad)" 
+          stroke-width="24" 
+          stroke-linecap="round" 
+          stroke-linejoin="round"
+          filter="url(#subtleGlow)" />
+
+    <path d="M 480 470 L 680 670" stroke="#00f2fe" stroke-width="16" stroke-linecap="round" filter="url(#glow)" />
+    
+    <circle cx="400" cy="120" r="9" fill="#ffffff" filter="url(#glow)" />
+    <circle cx="130" cy="390" r="12" fill="#00f2fe" filter="url(#glow)" />
+    <circle cx="670" cy="390" r="7" fill="#4facfe" />
+    <circle cx="680" cy="670" r="14" fill="#00f2fe" filter="url(#glow)" />
+    <circle cx="680" cy="670" r="6" fill="#ffffff" />
+    
+    <g stroke="#00f2fe" stroke-width="2" opacity="0.65">
+      <circle cx="430" cy="360" r="5" fill="#00f2fe" />
+      <line x1="430" y1="360" x2="350" y2="280" />
+      <line x1="430" y1="360" x2="500" y2="300" />
+      <line x1="430" y1="360" x2="360" y2="440" />
+      <line x1="430" y1="360" x2="510" y2="420" />
+      <line x1="350" y1="280" x2="310" y2="340" />
+      <line x1="500" y1="300" x2="550" y2="370" />
+      
+      <circle cx="350" cy="280" r="4" fill="#ffffff" />
+      <circle cx="500" cy="300" r="4" fill="#ffffff" />
+      <circle cx="360" cy="440" r="4" fill="#4facfe" />
+      <circle cx="510" cy="420" r="4" fill="#4facfe" />
+      <circle cx="310" cy="340" r="3" fill="#00f2fe" />
+      <circle cx="550" cy="370" r="3" fill="#00f2fe" />
+    </g>
+
+    <path d="M 220 250 A 200 200 0 0 1 350 150" stroke="#ffffff" stroke-width="4" fill="none" opacity="0.8" />
+    <circle cx="350" cy="150" r="4" fill="#ffffff" />
+    
+    <path d="M 250 510 A 190 190 0 0 0 350 580" stroke="#ffffff" stroke-width="3" fill="none" opacity="0.5" />
+  </g>
+
+  <g transform="translate(400, 715)" text-anchor="middle">
+    <text font-family="'Inter', 'Montserrat', 'Segoe UI', sans-serif" font-weight="300" font-size="52" fill="#FFFFFF" letter-spacing="8">
+      synapti<tspan font-weight="800" fill="#00f2fe">Q</tspan>
+    </text>
+    <text font-family="'Inter', 'Segoe UI', sans-serif" font-weight="500" font-size="14" fill="#4facfe" letter-spacing="12" dy="30" opacity="0.8">
+      KNOWLEDGE CONNECTED
+    </text>
+  </g>
+</svg>
