@@ -17,9 +17,11 @@ import User from "./pages/(UserProfile)/User.jsx"
 import Topics from "./pages/(TopicCard)/Topics.jsx"
 import Notes from "./pages/(Notes)/Notes.jsx"
 import Quiz from "./pages/(Quiz)/Quiz.jsx"
+import LandingPage from "./pages/(LandingPage)/SynaptiQ.jsx"
 
 const router = createBrowserRouter([
-  { path: "/", element: <Login /> },
+  { path: "/", element: <LandingPage/>},
+  { path: "/Login", element: <Login /> },
   { path: "/signup", element: <Signup/>},
   { path: "/dashboard", element: <Dashboard /> },
   { path: "/history", element: <History/>},

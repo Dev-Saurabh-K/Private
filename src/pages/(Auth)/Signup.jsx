@@ -33,7 +33,7 @@ const Signup = () => {
         )
         if(response.data){
           toast.success("Registration Success!")
-          navigate("/")
+          navigate("/login")
         }else{
           toast.error("Registration failed!")
         }

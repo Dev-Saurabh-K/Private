@@ -13,7 +13,7 @@ const Navbar = ({pathname}) => {
   const handleLogout = () =>{
     localStorage.removeItem("access_token");
     if(!localStorage.getItem("access_token")){
-      navigate("/");
+      navigate("/login");
     }
   }
   return (
