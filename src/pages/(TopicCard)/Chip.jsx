@@ -6,13 +6,13 @@ const Status = {
   ),
 
   Completed: ({ children }) => (
-    <div className="bg-green-100 text-green-700 p-2 rounded">
+    <div className="bg-green-100 border border-green-300 text-green-700 p-1 text-xs h-fit w-fit rounded-md">
       {children}
     </div>
   ),
 
   Pending: ({ children }) => (
-    <div className="bg-red-100 text-red-700 p-2 rounded">
+    <div className="bg-red-100 border border-red-300 text-red-700 p-1 text-xs h-fit w-fit rounded-md">
       {children}
     </div>
   ),

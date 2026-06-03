@@ -54,10 +54,10 @@ const HistoryComp = () => {
         {history.map((item) => (
           <div
             key={item.id}
-            className="cursor-pointer border rounded-md border-slate-300 w-full hover:bg-slate-200 h-full p-4 text-xs flex flex-col lg:flex-row"
+            className="cursor-pointer border rounded-md border-slate-300 w-full hover:bg-slate-200 h-full p-4 text-xs flex flex-col 2xl:flex-row max-h-25"
             onClick={() => handleClickOnHistory(item.history_group)}
           >
-            <h2 className="text-[17px]">{item.topic_text}</h2>
+            <p className="2xl:text-[1.5em] text-xs  2xl:line-clamp-2">{item.topic_text}</p>
             <div className="h-fit w-fit flex flex-row gap-2 items-center justify-center pt-1">
               <Chip label={item.subject} color="primary" variant="outlined" />
               <Chip label={item.history_group} size="small" />

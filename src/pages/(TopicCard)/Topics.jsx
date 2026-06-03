@@ -78,7 +78,7 @@ const Topics = () => {
 
   return (
     <div className="min-h-screen mb-40 w-screen flex items-center justify-center flex-col bg-slate-50 gap-4 text-black ">
-      <Navbar />
+      <Navbar pathname={"/topic"}/>
       
       {/* <CircularProgress aria-label="Loading…" color="inherit" className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 inset-0 "/> */}
       <div className="flex flex-wrap gap-4 bg-slate-50 items-center justify-center p-4 h-full w-full">

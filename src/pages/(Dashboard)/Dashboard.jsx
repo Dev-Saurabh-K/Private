@@ -1,4 +1,5 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import {useTopicStore} from "../../store/topicStore";
 
 import UploadPDF from "./UploadPDF";
 import HistoryComp from "./HistoryComp";
@@ -11,15 +12,25 @@ import { GitHubCalendar } from 'react-github-calendar';
 // import LoginRecord from "../(UserProfile)/LoginRecord";
 
 const Dashboard = () => {
+
+  const navigate = useNavigate();
+  const topic_id = useTopicStore((state)=>state.topic_id);
+  const handleResumeButton = ()=>{
+    if(topic_id){
+      navigate("/notes");
+    }
+    
+  }
   return (
-    <div className="min-h-screen mb-40 w-screen flex items-center justify-center flex-col bg-slate-50 gap-4">
+    <div className="min-h-screen mb-40 w-screen flex items-center justify-center flex-col bg-slate-50 gap-4 ">
       <Navbar/>
 
-      <div className="RESUME BUTTON">
-        <div className="font-bold">Hi, User</div>
-        <div className="w-fit p-5 rounded-md h-16 bg-slate-800 text-white hover:bg-slate-950 flex items-center justify-center gap-3 cursor-pointer ">
+      <div className="RESUME BUTTON  top-0">
+        {/* <div className="font-bold">Hi, User</div> */}
+        {topic_id && (<div className="w-fit p-5 rounded-md h-16 bg-slate-800 text-white hover:bg-slate-950 flex items-center justify-center gap-3 cursor-pointer " onClick={handleResumeButton}>
           Resume where left off <Send />
-        </div>
+        </div>)}
+        
       </div>
       <div className="flex flex-row flex-wrap gap-8 items-center justify-center h-[90vh] w-screen">
         <div className="lg:w-1/3 w-10/12 lg:h-1/2 border border-slate-300 rounded-md flex items-center justify-center">

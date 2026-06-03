@@ -1,62 +1,73 @@
-import {useState, useEffect} from 'react';
-import axios from 'axios';
+import { useState, useEffect } from "react";
+import axios from "axios";
 import Chat from "./Chat";
 import Navbar from "../(Dashboard)/Navbar";
+import { ArrowLeft } from "lucide-react";
 
-import HighlightedNotes from "./HighlightedNotes"
+import HighlightedNotes from "./HighlightedNotes";
 
-
-import {useTopicStore} from "../../store/topicStore";
+import { useTopicStore } from "../../store/topicStore";
 
 const Notes = () => {
-
-  const topic_id = useTopicStore((state)=>state.topic_id);
-  const URL = `${import.meta.env.VITE_API_URL}/api/retrieve/notes?topic_id=${topic_id}`;
+  const topic_id = useTopicStore((state) => state.topic_id);
+  const URL = `${
+    import.meta.env.VITE_API_URL
+  }/api/retrieve/notes?topic_id=${topic_id}`;
   const token = localStorage.getItem("access_token");
 
+  const [notes, setNotes] = useState([]);
 
-  const [notes, setNotes]=useState([]);
-
-  useEffect(()=>{
-    const fetchNotes = async()=>{
+  useEffect(() => {
+    const fetchNotes = async () => {
       // console.log(topic_id)
-      const response = await axios.get(URL,
-      {
-        headers:{
+      const response = await axios.get(URL, {
+        headers: {
           Authorization: `Bearer ${token}`,
         },
-      },
-      );
+      });
       setNotes(response.data);
     };
-    fetchNotes()
-  },[topic_id])
-
+    fetchNotes();
+  }, [topic_id]);
 
   return (
     <div className="min-h-screen mb-40 w-screen flex items-center justify-center flex-col bg-slate-50 gap-4">
-      <Navbar/>
-      <div>
-          <div key={notes.id}>
-            <h2>{notes.topic_text}</h2>
-            {/* {notes.topic_notes} */}
-            <HighlightedNotes text={notes.topic_notes} words={notes.keywords}/>
-            {/* {console.log(notes.keywords)} */}
-            {/* {keywords} */}
-            <div>
-              <h4>keywords</h4>
-              {notes?.keywords?.map((keyword, index)=>(
-                <span key={index} className="flex">{keyword}</span>
-              ))}
-            </div>
+      <Navbar pathname={"/notes"} />
+      <div className="px-5 w-screen h-full flex md:flex-row flex-col justify-center items-center">
+        <div
+          key={notes.id}
+          className=" md:p-5 p-1 flex flex-col gap-4 md:gap-8 md:w-8/12"
+        >
+          <div className="BACK BUTTON flex flex-row items-center justify-start text-[16px] rounded-md hover:bg-slate-200 w-fit px-2 py-2 cursor-pointer h-fit">
+            <ArrowLeft className="size-4" />
+            Back to Notes
+          </div>
+          <h2 className="font-semibold md:text-2xl">{notes.topic_text}</h2>
+          {/* {notes.topic_notes} */}
+          <div className="border md:p-5 p-1 rounded-md text-lg">
+            <HighlightedNotes text={notes.topic_notes} words={notes.keywords} />
           </div>
 
-      </div>
-      <div>
-        <Chat/>
+          {/* {console.log(notes.keywords)} */}
+          {/* {keywords} */}
+          <div className="flex flex-col gap-4">
+            <h4 className="font-semibold text-xl">keywords</h4>
+            <div className="flex flex-wrap gap-2">
+              {notes?.keywords?.map((keyword, index) => (
+              <div key={index} className="flex bg-red-200 w-fit px-3 py-1 rounded-md border-2 hover:border-2 hover:border-red-400 hover:w-fit cursor-pointer">
+                {keyword}
+              </div>
+            ))}
+            </div>
+            
+          </div>
+        </div>
+        <div className=" md:w-2/8 w-full md:min-h-10/12 h-screen">
+          <Chat topic={notes.topic_text}/>
+        </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Notes
+export default Notes;

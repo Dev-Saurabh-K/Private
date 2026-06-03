@@ -1,7 +1,12 @@
 import { LogOut, User, ChartBar, Home, FileText } from "lucide-react";
 import {NavLink} from 'react-router-dom';
 
-const Navbar = () => {
+const Navbar = ({pathname}) => {
+
+  // const { pathname } = useLocation();
+  // console.log(pathname)
+
+  const activeUrls = ["/topic", "/notes"];
   return (
     <div className="NAVBAR  items-center flex-row justify-around w-full  py-3 border-b border-b-gray-200 hidden md:flex">
         <div className="LOGO text-2xl font-bold">
@@ -16,7 +21,7 @@ const Navbar = () => {
               <Home className="size-4.5" />
               Dashboard
             </NavLink>
-            <NavLink to="/notes" className={({isActive})=>isActive?"bg-black text-white font-medium w-fit h-10 px-3 rounded-md flex flex-row items-center justify-center gap-2 ":"bg-white text-black font-medium w-fit h-10 px-3 rounded-md flex flex-row items-center justify-center gap-2 hover:bg-gray-200"}>
+            <NavLink to="/topic" className={({isActive})=>isActive || activeUrls.includes(pathname)?"bg-black text-white font-medium w-fit h-10 px-3 rounded-md flex flex-row items-center justify-center gap-2 ":"bg-white text-black font-medium w-fit h-10 px-3 rounded-md flex flex-row items-center justify-center gap-2 hover:bg-gray-200"}>
               <FileText className="size-4.5" />
               Notes
             </NavLink>

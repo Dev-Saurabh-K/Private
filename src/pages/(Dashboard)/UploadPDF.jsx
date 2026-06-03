@@ -84,7 +84,7 @@ const UploadPDF = () => {
             <div><p>Drop the PDF files here ...</p><p>PDF files only</p></div>
             
           ) : (
-            <p className="text-black font-semibold flex items-center justify-center flex-col">Drag 'n' drop some files here, or click to select files. <p className="text-slate-700 font-semibold">PDF files only</p></p>
+            <div className="text-black font-semibold flex items-center justify-center flex-col">Drag 'n' drop some files here, or click to select files. <p className="text-slate-700 font-semibold">PDF files only</p></div>
           )}
         </div>
         {fileName?(<div onClick={uploadPdf} className="size-20 bg-black text-white flex items-center justify-center w-full h-10 rounded-md hover:bg-slate-900">
