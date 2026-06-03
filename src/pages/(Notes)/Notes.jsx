@@ -14,6 +14,8 @@ import { useTopicStore } from "../../store/topicStore";
 const Notes = () => {
   const [modelOpen, setModelOpen] = useState(false);
   const topic_id = useTopicStore((state) => state.topic_id);
+  // const setTopic = useTopicStore((state)=>state.setTopic);
+  const setTopic_id = useTopicStore((state)=>state.setTopic_id);
   const navigate = useNavigate();
   const URL = `${
     import.meta.env.VITE_API_URL
@@ -58,6 +60,12 @@ const Notes = () => {
     setResponse(res.data);
   };
 
+  const handleClickOnQuiz = () =>{
+    setTopic_id(topic_id);
+    // setTopic(topic);
+    navigate("/quiz");
+  }
+
   return (
     <div className="min-h-screen mb-40 w-screen flex items-center justify-center flex-col bg-slate-50 gap-4">
       <Navbar pathname={"/notes"} />
@@ -99,7 +107,7 @@ const Notes = () => {
               ))}
 
             </div>
-              <QuizSection/>
+              <QuizSection handleClickOnQuiz={handleClickOnQuiz}/>
           </div>
         </div>
 
