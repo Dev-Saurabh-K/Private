@@ -27,9 +27,9 @@ const Dashboard = () => {
 
       <div className="RESUME BUTTON  top-0">
         {/* <div className="font-bold">Hi, User</div> */}
-        {topic_id && (<div className="w-fit p-5 rounded-md h-16 bg-slate-800 text-white hover:bg-slate-950 flex items-center justify-center gap-3 cursor-pointer " onClick={handleResumeButton}>
+        {/* {topic_id && (<div className="w-fit p-5 rounded-md h-16 bg-slate-800 text-white hover:bg-slate-950 flex items-center justify-center gap-3 cursor-pointer " onClick={handleResumeButton}>
           Resume where left off <Send />
-        </div>)}
+        </div>)} */}
         
       </div>
       <div className="flex flex-row flex-wrap gap-8 items-center justify-center h-[90vh] w-screen">

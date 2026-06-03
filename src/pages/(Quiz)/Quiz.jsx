@@ -9,6 +9,7 @@ import { useBatchStore } from "../../store/batchStore";
 import { ArrowLeft } from "lucide-react";
 
 import Navbar from "../(Dashboard)/Navbar";
+import CircularProgress from '@mui/material/CircularProgress';
 
 const Quiz = () => {
   const navigate = useNavigate();
@@ -16,6 +17,7 @@ const Quiz = () => {
   const [questions, setQuestions] = useState([]);
   const [submitted, setSubmitted] = useState(false);
   const [score, setScore] = useState(0);
+  const [loading, setLoading] = useState(false);
   const batch_id = useBatchStore((state) => state.batch_id);
   const setBatch_id = useBatchStore((state) => state.setBatch_id);
   const answers = useQuizStore((state) => state.answers);
@@ -31,6 +33,7 @@ const Quiz = () => {
 
   useEffect(() => {
     const fetchQuiz = async () => {
+      setLoading(true);
       const response = await axios.get(QUIZ_URL, {
         headers: {
           Authorization: `Bearer ${access_token}`,
@@ -42,6 +45,7 @@ const Quiz = () => {
       }
     };
     fetchQuiz();
+    setLoading(false);
   }, []);
 
   const handleUpdateArray = async (value, i) => {
@@ -101,6 +105,7 @@ const Quiz = () => {
   return (
     <div className="min-h-screen mb-40 w-screen flex items-center justify-center flex-col bg-slate-50 gap-4 px-2">
       <Navbar />
+      {loading && <CircularProgress aria-label="Loading…" className="absolute z-10 top-1/2 left-1/2"/>}
       <div className="flex flex-col gap-5 ">
         <div
           className="BACK BUTTON flex flex-row items-center justify-start text-[16px] rounded-md hover:bg-slate-200 w-fit px-2 py-2 cursor-pointer h-fit gap-5 font-semibold"

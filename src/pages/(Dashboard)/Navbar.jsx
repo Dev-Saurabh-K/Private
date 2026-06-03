@@ -1,15 +1,17 @@
 import { LogOut, User, ChartBar, Home, FileText } from "lucide-react";
 import {NavLink, useNavigate} from 'react-router-dom';
+import {useTopicStore} from '../../store/topicStore'
 
 const Navbar = ({pathname}) => {
 
   // const { pathname } = useLocation();
   // console.log(pathname)
   const navigate = useNavigate();
+  const topic_id = useTopicStore((state)=> state.topic_id);
 
   const activeUrls = ["/topic", "/notes"];
   const handleLogout = () =>{
-    localStorage.clear("access.token");
+    localStorage.removeItem("access_token");
     if(!localStorage.getItem("access_token")){
       navigate("/");
     }
@@ -28,10 +30,11 @@ const Navbar = ({pathname}) => {
               <Home className="size-4.5" />
               Dashboard
             </NavLink>
-            <NavLink to="/topic" className={({isActive})=>isActive || activeUrls.includes(pathname)?"bg-black text-white font-medium w-fit h-10 px-3 rounded-md flex flex-row items-center justify-center gap-2 ":"bg-white text-black font-medium w-fit h-10 px-3 rounded-md flex flex-row items-center justify-center gap-2 hover:bg-gray-200"}>
+            {topic_id?<NavLink to="/topic" className={({isActive})=>isActive || activeUrls.includes(pathname)?"bg-black text-white font-medium w-fit h-10 px-3 rounded-md flex flex-row items-center justify-center gap-2 ":"bg-white text-black font-medium w-fit h-10 px-3 rounded-md flex flex-row items-center justify-center gap-2 hover:bg-gray-200"}>
               <FileText className="size-4.5" />
               Notes
-            </NavLink>
+            </NavLink>:<div className="bg-white text-black font-medium w-fit h-10 px-3 rounded-md flex flex-row items-center justify-center gap-2 hover:bg-gray-200 cursor-not-allowed"><FileText className="size-4.5" />Notes</div>}
+            
             <NavLink to="/analytics" className={({isActive})=>isActive?"bg-black text-white font-medium w-fit h-10 px-3 rounded-md flex flex-row items-center justify-center gap-2 ":"bg-white text-black font-medium w-fit h-10 px-3 rounded-md flex flex-row items-center justify-center gap-2 hover:bg-gray-200"}>
               <ChartBar className="size-4.5" />
               Analytics
