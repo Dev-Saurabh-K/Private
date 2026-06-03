@@ -29,7 +29,7 @@ const KeywordCard = ({ modelOpen, keyword, setModelOpen, response }) => {
           {/* {context} */}
           {response && (
             <div className="flex flex-col flex-3 gap-1">
-              <div>{keyword}</div>
+              <div className="text-black font-semibold text-center">{keyword}</div>
               <div className="border border-blue-300 bg-blue-200 p-1 rounded-md flex items-center justify-center">
                 {response?.info}
               </div>
@@ -58,12 +58,13 @@ const KeywordCard = ({ modelOpen, keyword, setModelOpen, response }) => {
               )}
             </div>
           )}
-
-          <div className="IMG size-full bg-blue-200 flex flex-1 flex-col border border-blue-300 rounded-md">
-            <div className="h-full w-full p-2">
-              {imageUrl && <img src={imageUrl} alt="" className="h-full w-full" />}
+          {imageUrl && (
+            <div className="IMG size-full bg-blue-200 flex flex-1 flex-col border border-blue-300 rounded-md">
+              <div className="h-full w-full p-2">
+                <img src={imageUrl} alt="" className="h-full w-full" />
+              </div>
             </div>
-          </div>
+          )}
         </div>
       )}
     </>

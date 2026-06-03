@@ -12,6 +12,12 @@ const useQuizStore = create(
                     answers[index] = answer;
                     return {answers};
                 }),
+            removeAnswer: (index) =>
+                set((state)=>{
+                    const answers = [...state.answers];
+                    answers[index] = "";
+                    return {answers}
+                }),
         }),
         {
             name: "quiz-storage",

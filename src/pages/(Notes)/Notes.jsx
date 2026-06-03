@@ -2,8 +2,10 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import Chat from "./Chat";
 import Navbar from "../(Dashboard)/Navbar";
+import QuizSection from "./QuizSection";
 import { ArrowLeft } from "lucide-react";
 import KeywordCard from "./KeywordCard";
+import { useNavigate } from "react-router-dom"
 
 import HighlightedNotes from "./HighlightedNotes";
 
@@ -12,6 +14,7 @@ import { useTopicStore } from "../../store/topicStore";
 const Notes = () => {
   const [modelOpen, setModelOpen] = useState(false);
   const topic_id = useTopicStore((state) => state.topic_id);
+  const navigate = useNavigate();
   const URL = `${
     import.meta.env.VITE_API_URL
   }/api/retrieve/notes?topic_id=${topic_id}`;
@@ -69,9 +72,10 @@ const Notes = () => {
             keyword={keyword}
             response={response}
           />
-          <div className="BACK BUTTON flex flex-row items-center justify-start text-[16px] rounded-md hover:bg-slate-200 w-fit px-2 py-2 cursor-pointer h-fit">
+          <div className="BACK BUTTON flex flex-row items-center justify-start text-[16px] rounded-md hover:bg-slate-200 w-fit px-2 py-2 cursor-pointer h-fit gap-3 font-semibold"
+          onClick={()=>navigate(-1)}>
             <ArrowLeft className="size-4" />
-            Back to Notes
+            Back to Topics
           </div>
           <h2 className="font-semibold md:text-2xl">{notes.topic_text}</h2>
           {/* {notes.topic_notes} */}
@@ -93,7 +97,9 @@ const Notes = () => {
                   {keyword}
                 </div>
               ))}
+
             </div>
+              <QuizSection/>
           </div>
         </div>
 
