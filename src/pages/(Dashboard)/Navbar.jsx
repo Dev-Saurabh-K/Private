@@ -1,12 +1,19 @@
 import { LogOut, User, ChartBar, Home, FileText } from "lucide-react";
-import {NavLink} from 'react-router-dom';
+import {NavLink, useNavigate} from 'react-router-dom';
 
 const Navbar = ({pathname}) => {
 
   // const { pathname } = useLocation();
   // console.log(pathname)
+  const navigate = useNavigate();
 
   const activeUrls = ["/topic", "/notes"];
+  const handleLogout = () =>{
+    localStorage.clear("access.token");
+    if(!localStorage.getItem("access_token")){
+      navigate("/");
+    }
+  }
   return (
     <div className="NAVBAR  items-center flex-row justify-around w-full  py-3 border-b border-b-gray-200 hidden md:flex">
         <div className="LOGO text-2xl font-bold">
@@ -33,11 +40,11 @@ const Navbar = ({pathname}) => {
 
           <div className="RIGHT OF RPNB flex flex-row items-center justify-center gap-5">
             <div className="text-gray-200 text-4xl">|</div>
-            <div className="bg-white text-black font-medium w-fit h-8 px-3 rounded-md flex items-center justify-center gap-2 hover:bg-gray-200">
+            <div className="bg-white text-black font-medium w-fit h-8 px-3 rounded-md flex items-center justify-center gap-2 hover:bg-gray-200 cursor-not-allowed">
               <User className="size-4.5" />
               User
             </div>
-            <div className="bg-white text-black font-medium w-fit h-8 px-3 rounded-md flex items-center justify-center gap-2 hover:bg-gray-200">
+            <div className="bg-white text-black font-medium w-fit h-8 px-3 rounded-md flex items-center justify-center gap-2 hover:bg-gray-200 cursor-pointer" onClick={handleLogout}>
               <LogOut className="size-4.5" />
               Logout
             </div>
