@@ -29,6 +29,7 @@ const Quiz = () => {
     import.meta.env.VITE_API_URL
   }/api/notes/quiz?topic_id=${topic_id}`;
   const SUBMIT_URL = `${import.meta.env.VITE_API_URL}/api/notes/quiz/submit`;
+  const SCORE_URL = `${import.meta.env.VITE_API_URL}/api/quiz/score`;
   const access_token = localStorage.getItem("access_token");
 
   useEffect(() => {
@@ -66,7 +67,7 @@ const Quiz = () => {
   const handleSubmitQuiz = async () => {
     // console.log(answers);
     if(submitted){
-        navigate("/notes")
+        navigate("/topic")
         return;
     }
     const response = await axios.post(
@@ -89,17 +90,28 @@ const Quiz = () => {
     }
   };
 
-  const checkScore = ()=>{
-    if(submitted){
-        let total =0;
-        for (let i = 0; i < questions.length; i++){
-            if(questions[i].chosen_answer == questions[i].answer){
-                total++
-            }
+  const checkScore = async()=>{
+    // if(submitted){
+    //     let total =0;
+    //     for (let i = 0; i < questions.length; i++){
+    //         if(questions[i].chosen_answer == questions[i].answer){
+    //             total++
+    //         }
             
+    //     }
+    //     setScore(total)
+    // }
+    const res = await axios.get(SCORE_URL,
+      {
+        params:{
+          topic_id:topic_id
+        },
+        headers:{
+          Authorization: `Bearer ${access_token}`
         }
-        setScore(total)
-    }
+      }
+    )
+    setScore(res.data.score)
   }
 
   return (
