@@ -6,6 +6,8 @@ import {  toast } from "react-toastify";
 import { LogIn } from "lucide-react";
 
 import Logo from "../(Assets)/Logo";
+import {useNameStore} from "../../store/nameStore";
+import axios from "axios";
 
 
 function Login() {
@@ -13,9 +15,11 @@ function Login() {
   //   document.documentElement.classList.toggle("dark");
   // }
 
+  const setName = useNameStore((state)=>state.setName);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const URL = `${import.meta.env.VITE_API_URL}/login`;
+  const DATAURL = `${import.meta.env.VITE_API_URL}/protected/user/me`
   const navigate = useNavigate();
 
   const submitLogin = async () => {
@@ -35,6 +39,24 @@ function Login() {
 
       if (response.ok) {
         localStorage.setItem("access_token", data.access_token);
+
+        ///chnage afterwards
+        try{
+          const fetchUserData = await axios.get(DATAURL,
+            {
+              headers:{
+                Authorization: `Bearer ${localStorage.getItem("access_token")}`
+              }
+            }
+          )
+          // console.log(fetchUserData.data)
+          setName(fetchUserData.data.username);
+        }catch(error){
+          console.log("nameerror:",error)
+        }
+
+
+
         navigate("/dashboard");
       } else {
         toast.error(`Error: ${response.status}, ${response.statusText}`);

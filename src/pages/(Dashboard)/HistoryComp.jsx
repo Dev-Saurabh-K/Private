@@ -16,7 +16,7 @@ const HistoryComp = () => {
   const navigate = useNavigate();
 
   //zustand global states
-  const history_id = useHistoryStore((state) => state.history_id);
+  // const history_id = useHistoryStore((state) => state.history_id);
   const setHistory_id = useHistoryStore((state) => state.setHistory_id);
   const historyRefreshToken = useHistoryRefreshStore(
     (state) => state.historyRefreshToken,
