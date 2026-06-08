@@ -13,6 +13,7 @@ import { useTopicStore } from "../../store/topicStore";
 
 const Notes = () => {
   const [modelOpen, setModelOpen] = useState(false);
+  const [selectedText, setSelectedText]=useState("");
   const topic_id = useTopicStore((state) => state.topic_id);
   // const setTopic = useTopicStore((state)=>state.setTopic);
   const setTopic_id = useTopicStore((state)=>state.setTopic_id);
@@ -66,6 +67,19 @@ const Notes = () => {
     navigate("/quiz");
   }
 
+  const handleTextSelection = () =>{
+    const selection = window.getSelection();
+    const text = selection.toString().trim();
+
+    if(text){
+      setSelectedText(text);
+    };
+  };
+
+  const handleMouseDown = () =>{
+    setSelectedText("");
+  }
+
   return (
     <div className="min-h-screen mb-40 w-screen flex items-center justify-center flex-col bg-slate-50 gap-4">
       <Navbar pathname={"/notes"} />
@@ -87,7 +101,7 @@ const Notes = () => {
           </div>
           <h2 className="font-semibold md:text-2xl">{notes.topic_text}</h2>
           {/* {notes.topic_notes} */}
-          <div className="border md:p-5 p-1 rounded-md text-lg">
+          <div className="border md:p-5 p-1 rounded-md text-lg" onMouseUp={handleTextSelection} onMouseDown={handleMouseDown}>
             <HighlightedNotes text={notes.topic_notes} words={notes.keywords} />
           </div>
 
@@ -112,7 +126,7 @@ const Notes = () => {
         </div>
 
         <div className=" md:w-2/8 w-full md:min-h-10/12 h-screen">
-          <Chat topic={notes.topic_text} />
+          <Chat topic={notes.topic_text} selectedText={selectedText} closeReply={handleMouseDown} setSelectedText={setSelectedText}/>
         </div>
       </div>
     </div>
